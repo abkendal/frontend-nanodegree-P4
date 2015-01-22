@@ -335,9 +335,9 @@ function updatePositions() {
 
   var items = document.querySelectorAll('.mover');
   for (var i = 0; i < items.length; i++) {
-    var phase = matrix[document.body.scrollTop][i];
+    var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
-    }
+  }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
   // Super easy to create custom metrics.
@@ -369,21 +369,6 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById("movingPizzas1").appendChild(elem);
   }
   //updatePositions();
-});
-
-
-document.addEventListener('DOMContentLoaded', function() {
-  var items = document.querySelectorAll('.mover');
-
-  for (var x = -300; x < 13000; x++) {
-    matrix[x] = [];
-    for (var y = 0; y < items.length; y++) {
-      var phase = Math.sin((x / 1250) + (y % 5));
-      matrix[x][y] = phase;
-    //items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
-    };
-  };
-  //console.log("Matrix created");
 });
 
 
